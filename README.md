@@ -88,9 +88,9 @@ for the 30 min. and 60 min. variant, respectively.
 In order to train ```FedNautilus```, run the ```server.py``` script in order to instantiate the aggregation script, as well as the  ```client.py``` script for as many available clients (data silos):
 
 ```bash
-python server.py [-h] [--strat] [--atten] [--bi] [--dspeed] [--dcourse] [--shiptype] [--length LENGTH] [--stride STRIDE] [--max_dt MAX_DT] [--silos SILOS] [--fraction_fit FRACTION_FIT] [--fraction_eval FRACTION_EVAL] [--num_rounds NUM_ROUNDS] [--load_check] [--port PORT] [--mu MU]
+python server.py [-h] [--bi] [--dspeed] [--dcourse] [--shiptype] [--length LENGTH] [--stride STRIDE] [--max_dt MAX_DT] [--silos SILOS] [--fraction_fit FRACTION_FIT] [--fraction_eval FRACTION_EVAL] [--num_rounds NUM_ROUNDS] [--load_check] [--port PORT] [--mu MU]
 
-python client.py [-h] --data {brest_1800,brest_3600,piraeus_1800,piraeus_3600,mt_1800,mt_3600} [--gpuid GPUID] [--crs CRS] [--strat] [--atten] [--bi] [--dspeed] [--dcourse] [--shiptype] [--bs BS] [--length LENGTH] [--stride STRIDE] [--aug] [--max_dt MAX_DT] [--load_check] [--port PORT] [--silos SILOS] [--mu MU] [--fraction_fit FRACTION_FIT] [--fraction_eval FRACTION_EVAL] [--personalize] [--global_ver GLOBAL_VER] [--num_rounds NUM_ROUNDS]
+python client.py [-h] --data {brest_1800,brest_3600,piraeus_1800,piraeus_3600,mt_1800,mt_3600} [--gpuid GPUID] [--crs CRS] [--bi] [--dspeed] [--dcourse] [--shiptype] [--bs BS] [--length LENGTH] [--stride STRIDE] [--aug] [--max_dt MAX_DT] [--load_check] [--port PORT] [--silos SILOS] [--mu MU] [--fraction_fit FRACTION_FIT] [--fraction_eval FRACTION_EVAL] [--personalize] [--global_ver GLOBAL_VER] [--num_rounds NUM_ROUNDS]
 ```
 
 For training ```Nautilus``` up to specifications defined in the paper, adjust the above command as follows:
@@ -138,10 +138,12 @@ python client.py --data {brest_1800,piraeus_1800,mt_1800} --gpuid 3 --bs 1 --shi
 
 # On Reproducing the Experimental Study
 
+For the sake of convenience the preprocessed versions of the open datasets used in our experimental study can be found in the directory ```./data/{brest,piraeus}-dataset/10_sec__{1800,3600}_sec/dataset_trajectories_preprocessed_with_type.fixed.csv``` (after extracting the corresponding zip files).
+
 To reproduce the experimental study, i.e., test the performance of the models in the datasets' test set, run the following script (using the same parameters/flags as the aforementioned scripts):
 
 ```bash
-python model-evaluation.py --data {brest_1800,brest_3600,piraeus_1800,piraeus_3600,mt_1800,mt_3600} [--gpuid GPUID] [--crs CRS] [--strat] [--ext] [--atten] [--bi] [--dspeed] [--dcourse] [--shiptype] [--bs BS] [--length LENGTH] [--stride STRIDE] [--aug] [--max_dt MAX_DT] [--patience PATIENCE] [--silos SILOS] [--fraction_fit FRACTION_FIT] [--fraction_eval FRACTION_EVAL] [--cml] [--fl] [--perfl] [--global_ver GLOBAL_VER] [--mu MU]
+python model-evaluation.py --data {brest_1800,brest_3600,piraeus_1800,piraeus_3600,mt_1800,mt_3600} [--gpuid GPUID] [--crs CRS] [--bi] [--dspeed] [--dcourse] [--shiptype] [--bs BS] [--length LENGTH] [--stride STRIDE] [--aug] [--max_dt MAX_DT] [--patience PATIENCE] [--silos SILOS] [--fraction_fit FRACTION_FIT] [--fraction_eval FRACTION_EVAL] [--cml] [--fl] [--perfl] [--global_ver GLOBAL_VER] [--mu MU]
 ```
 
 ## Documentation

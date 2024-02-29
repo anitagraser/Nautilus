@@ -138,7 +138,12 @@ python client.py --data {brest_1800,piraeus_1800,mt_1800} --gpuid 3 --bs 1 --shi
 
 # On Reproducing the Experimental Study
 
-For the sake of convenience the preprocessed versions of the open datasets used in our experimental study can be found in the directory ```./data/{brest,piraeus}-dataset/10_sec__{1800,3600}_sec/dataset_trajectories_preprocessed_with_type.fixed.csv``` (after extracting the corresponding zip files).
+For the sake of convenience the preprocessed versions of the open datasets used in our experimental study can be found in the directory ```./data/{brest,piraeus}-dataset/10_sec__{1800,3600}_sec/dataset_trajectories_preprocessed_with_type.fixed.csv``` (after extracting the corresponding zip files). To extract the files, use an application, such as [7-zip](https://www.7-zip.org) (Windows), [The Unarchiver](https://theunarchiver.com) (Mac), or the following terminal commands (Linux/Mac):
+
+```bash
+ls -v 10_sec__{1800,3600}_sec.z* | xargs cat > 10_sec__{1800,3600}_sec.zip.fixed
+unzip 10_sec__{1800,3600}_sec.zip.fixed
+```
 
 To reproduce the experimental study, i.e., test the performance of the models in the datasets' test set, run the following script (using the same parameters/flags as the aforementioned scripts):
 

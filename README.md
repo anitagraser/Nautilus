@@ -174,7 +174,7 @@ Yannis Theodoridis; Department of Informatics, University of Piraeus
 # Citation
 If you use [Fed]Nautilus in your project, we would appreciate citations to the following paper:
 
-> Andreas Tritsarolis, Nikos Pelekis, Konstantina Bereta, Dimitris Zissis, and Yannis Theodoridis. 2024. On Vessel Location Forecasting and the Effect of Federated Learning. Submitted
+> Andreas Tritsarolis, Nikos Pelekis, Konstantina Bereta, Dimitris Zissis, and Yannis Theodoridis. 2024. On Vessel Location Forecasting and the Effect of Federated Learning. In Proceedings of the 25th Conference on Mobile Data Management (MDM).
 
 
 # Acknowledgement

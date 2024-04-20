@@ -1,5 +1,5 @@
 # Nautilus
-### Official Python implementation of the [Fed]Nautilus model from the paper "On Vessel Location Forecasting and the Effect of Federated Learning"
+### Official Python implementation of the [Fed]Nautilus model, both centralized and federated learning versions, proposed in the paper "On Vessel Location Forecasting and the Effect of Federated Learning”, MDM Conference, 2024.
 
 
 # Installation 

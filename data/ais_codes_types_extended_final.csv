@@ -1,0 +1,71 @@
+shiptype_min,shiptype_max,type_name,description,detailed_description
+10,19,Reserved,Unspecified, 
+20,28,Wing In Grnd,Wing in Grnd,Wing In Ground Effect Vessel;
+29,29,SAR Aircraft,Search and Rescue, 
+30,30,Fishing,Fishing,Fishing Vessel;Trawler;Fishery Protection/Research;Fish Carrier;Fish Factory;Factory Trawler;Fish Storage Barge;Fishery Research Vessel;Fishery Patrol Vessel;Fishery Support Vessel
+31,31,Tug,Tug,Towing Vessel;Tug/Tender;Tug/Supply Vessel;Tug/Fire Fighting Vessel;Tug;Tug/Pilot Ship;Anchor Handling Salvage Tug;Towing/Pushing;Tug/Ice Breaker;Tractor Tug;Tug/Support;Articulated Pusher Tug
+32,32,Tug,Tug, 
+33,33,Dredger,Special Craft,Suction Hopper Dredger;Dredger;Drill Ship;Grab Hopper Dredger;Grab Dredger;Sand Suction Dredger;Hopper Dredger;Cutter Suction Dredger;Cutter Suction Hopper Dredger;Suction Dredger;Bucket Dredger;Trailing Suction Hopper Dredge;Trailing Suction Dredger;Inland Dredger;Drilling Jack Up;Bucket Ladder Dredger;Drill Barge;Bucket Hopper Dredger;Bucket Dredger Pontoon;Bucket Wheel Suction Dredger;Dredging Pontoon;Backhoe Dredger;Suction Dredger Pontoon;Water Jet Dredging Pontoon;Grab Dredger Pontoon;Kelp Dredger
+34,34,Dive Vessel,Special Craft,Diving Support Vessel;
+35,35,Military Ops,Special Craft,Naval/Naval Auxiliary Vessel;Naval Auxiliary Tug;Logistics Naval Vessel;Mine Hunter;Minesweeper;Combat Vessel;Command Vessel;Naval Salvage Vessel;Torpedo Recovery Vessel;Naval Research Vessel;Naval Patrol Vessel;Troopship;Radar Vessel
+36,36,Sailing Vessel,Sailing Vessel,Sailing Vessel;
+37,37,Pleasure Craft,Pleasure Craft,Yacht;Museum Ship;Exhibition Ship;Floating Hotel/Restaurant;Theatre Vessel
+38,38,Reserved,Unspecified, 
+39,39,Reserved,Unspecified, 
+40,49,High-Speed Craft,High-Speed Craft,Hydrofoil;Hovercraft
+50,50,Pilot Vessel,Special Craft, 
+51,51,SAR,Search and Rescue,Salvage/Rescue Vessel;Offshore Safety Vessel;Standby Safety Vessel
+52,52,Tug,Tug,Icebreaker;Inland Tug;Pusher Tug
+53,53,Port Tender,Special Craft,Tender;Crew Boat;Pilot Ship;Supply Tender
+54,54,Anti-Pollution,Special Craft,Pollution Control Vessel;
+55,55,Law Enforce,Special Craft,Patrol Vessel;
+56,56,Local Vessel,Special Craft, 
+57,57,Local Vessel,Special Craft, 
+58,58,Medical Trans,Special Craft,Hospital Ship;
+59,59,Special Craft,Special Craft,Multi Purpose Offshore Vessel;Barge Carrier;Heavy Lift Vessel;Special Vessel;Maintenance Vessel;Pipe Layer;Waste Disposal Vessel;Supply Vessel;Training Ship;Floating Storage/Production;Radio Ship;Research/Survey Vessel;Repair Ship;Support Vessel;Fire Fighting Tractor Tug;Landing Craft;Floating Crane;Fire Fighting/Supply Vessel;Whaler;Multi-Purpose Vessel;Tank-Cleaning Vessel;Mining Vessel;Fire Fighting Vessel;Paddle Ship;Anchor Handling Vessel;Nuclear Fuel Carrier;Sludge Carrier;Whale Factory;Utility Vessel;Work Vessel;Platform;Mission Ship;Buoy-Laying Vessel;Well Stimulation Vessel;Motor Hopper;Cable Layer;Anchor Handling/Fire Fighting;Crane Ship;Inland Supply Vessel;Offshore Supply Ship;Trenching Support Vessel;Offshore Construction Jack Up;Pile Driving Vessel;Replenishment Vessel;Construction Support Vessel;Pipelay Crane Vessel;Crane Barge;Work Pontoon;Production Testing Vessel;Floating Sheerleg;Mooring Vessel;Diving Support Platform;Support Jack Up;Sealer;Trans Shipment Vessel;Floating Linkspan;Crane Jack Up;Pumping Platform;Air Cushion Vessel;Power Station Vessel;Supply Jack Up;Radar Platform;Jacket Launching Pontoon;Pipe Layer Platform;Pipe Burying Vessel;Air Cushion Patrol Vessel;Air Cushion Work Vessel;Pearl Shells Carrier;Steam Supply Pontoon;Incinerator;Jack Up Barge;Desalination Pontoon;Grain Elevating Pontoon
+60,69,Passenger,Passenger,Passengers Ship;Inland Passengers Ship;Inland Ferry;Floating Hotel;Ferry;Ro-Ro/Passenger Ship;Accommodation Ship;Accommodation Barge;Accommodation Jack Up;Accommodation Vessel;Passengers Landing Craft;Houseboat;Accommodation Platform;Air Cushion Passenger Ship;Air Cushion Ro-Ro/Passenger Sh
+70,70,Cargo,Cargo,Passenger/Cargo Ship;Livestock Carrier;Bulk Carrier;Ore Carrier;General Cargo;Wood Chips Carrier;Container Ship;Ro-Ro Cargo;Reefer;Heavy Load Carrier;Barge;Ro-Ro/Container Carrier;Inland Cargo;Cement Carrier;Reefer/Containership;Vegetable/Animal Oil Tanker;Obo Carrier;Vehicles Carrier;Inland Ro-Ro Cargo Ship;Rail/Vehicles Carrier;Pallet Carrier;Cargo Barge;Hopper Barge;Deck Cargo Ship;Cargo/Containership;Aggregates Carrier;Limestone Carrier;Ore/Oil Carrier;Self Discharging Bulk Carrier;Deck Cargo Pontoon;Bulk Carrier With Vehicle Deck;Pipe Carrier;Cement Barge;Stone Carrier;Bulk Storage Barge;Aggregates Barge;Timber Carrier;Bulker;Trans Shipment Barge;Powder Carrier;Cabu Carrier;Vehicle Carrier;Cargo
+71,71,Cargo - Hazard A (Major),Cargo, 
+72,72,Cargo - Hazard B,Cargo, 
+73,73,Cargo - Hazard C (Minor),Cargo, 
+74,74,Cargo - Hazard D (Recognizable),Cargo, 
+75,79,Cargo,Cargo, 
+80,80,Tanker,Tanker,Tanker;Asphalt/Bitumen Tanker;Chemical Tanker;Crude Oil Tanker;Inland Tanker;Fruit Juice Tanker;Bunkering Tanker;Wine Tanker;Oil Products Tanker;Oil/Chemical Tanker;Water Tanker;Tank Barge;Edible Oil Tanker;Lpg/Chemical Tanker;Shuttle Tanker;Co2 Tanker
+81,81,Tanker - Hazard A (Major),Tanker, 
+82,82,Tanker - Hazard B,Tanker, 
+83,83,Tanker - Hazard C (Minor),Tanker, 
+84,84,Tanker - Hazard D (Recognizable),Tanker,Lng Tanker;Lpg Tanker
+85,89,Tanker,Tanker, 
+90,99,Other,Other, 
+100,100,Navigation Aid,Navigation Aid, 
+101,101,Reference Point,Reference Point, 
+102,102,RACON,RACON, 
+103,103,OffShore Structure,OffShore Structure, 
+104,104,Spare,Spare, 
+105,105,Light,"Light, without Sectors", 
+106,106,Light,"Light, with Sectors", 
+107,107,Leading Light Front,Leading Light Front, 
+108,108,Leading Light Rear,Leading Light Rear, 
+109,109,Beacon,"Beacon, Cardinal N", 
+110,110,Beacon,"Beacon, Cardinal E", 
+111,111,Beacon,"Beacon, Cardinal S", 
+112,112,Beacon,"Beacon, Cardinal W", 
+113,113,Beacon,"Beacon, Port Hand", 
+114,114,Beacon,"Beacon, Starboard Hand", 
+115,115,Beacon,"Beacon, Preferred Channel Port hand", 
+116,116,Beacon,"Beacon, Preferred Channel Starboard hand", 
+117,117,Beacon,"Beacon, Isolated danger", 
+118,118,Beacon,"Beacon, Safe Water", 
+119,119,Beacon,"Beacon, Special Mark", 
+120,120,Cardinal Mark N,Cardinal Mark N, 
+121,121,Cardinal Mark E,Cardinal Mark E, 
+122,122,Cardinal Mark S,Cardinal Mark S, 
+123,123,Cardinal Mark W,Cardinal Mark W, 
+124,124,Port Hand Mark,Port Hand Mark, 
+125,125,Starboard Hand Mark,Starboard Hand Mark, 
+126,126,Preferred Channel Port Hand,Preferred Channel Port Hand, 
+127,127,Preferred Channel Starboard Hand,Preferred Channel Starboard Hand, 
+128,128,Isolated Danger,Isolated Danger, 
+129,129,Safe Water,Safe Water, 
+130,130,Manned VTS,Manned VTS, 
+131,131,Light Vessel,Light Vessel, 

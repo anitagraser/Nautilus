@@ -10,3 +10,4 @@ rdp==0.8
 scikit_learn==1.2.2
 torch==1.13.1
 tqdm==4.64.1
+flwr

@@ -6,11 +6,8 @@
 In order to use Nautilus in your project, download all necessary modules in your directory of choice via pip or conda, and install their corresponding dependencies, as the following commands suggest:
 
 ```Python
-# Using pip/virtualenv
-pip install −r requirements.txt
-
-# Using conda
-conda install --file requirements.txt
+conda create -n nautilus python=3.10
+pip install -r requirements.txt
 ```
 
 
@@ -29,6 +26,43 @@ python data-preprocessing.py --data {brest,piraeus,mt} --shiptype --min_dt 10 --
 
 for the 30 min. and 60 min. variant, respectively.
 
+### Reproduction attempt
+
+```bash
+python data-preprocessing.py --data brest --shiptype --min_dt 10 --max_dt 1800
+
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\GraserA/data/brest-dataset\\nari_dynamic.csv'
+(nautilus) PS C:\Users\GraserA\Documents\GitHub\Nautilus>
+```
+
+Get nari_dynamic.csv from https://zenodo.org/record/1167595/files/%5BP1%5D%20AIS%20Data.zip?download=1
+
+```bash
+(nautilus) PS C:\Users\GraserA\Documents\GitHub\Nautilus> python data-preprocessing.py --data brest --shiptype --min_dt 10 --max_dt 1800
+[Raw Dataset] Dataset AIS Positions: 19035630
+[Invalid MMSIs] Dataset AIS Positions: 18657808; Time elapsed: 14.489725112915039
+Traceback (most recent call last):
+  File "C:\Users\GraserA\Documents\GitHub\Nautilus\data-preprocessing.py", line 72, in <module>
+    df.loc[:, f'timestamp_sec'] = df.timestamp_datetime.astype(int) // 10**9
+  File "C:\Users\GraserA\AppData\Local\miniconda3\envs\nautilus\lib\site-packages\pandas\core\generic.py", line 6324, in astype
+    new_data = self._mgr.astype(dtype=dtype, copy=copy, errors=errors)
+  File "C:\Users\GraserA\AppData\Local\miniconda3\envs\nautilus\lib\site-packages\pandas\core\internals\managers.py", line 451, in astype
+    return self.apply(
+  File "C:\Users\GraserA\AppData\Local\miniconda3\envs\nautilus\lib\site-packages\pandas\core\internals\managers.py", line 352, in apply
+    applied = getattr(b, f)(**kwargs)
+  File "C:\Users\GraserA\AppData\Local\miniconda3\envs\nautilus\lib\site-packages\pandas\core\internals\blocks.py", line 511, in astype
+    new_values = astype_array_safe(values, dtype, copy=copy, errors=errors)
+  File "C:\Users\GraserA\AppData\Local\miniconda3\envs\nautilus\lib\site-packages\pandas\core\dtypes\astype.py", line 242, in astype_array_safe
+    new_values = astype_array(values, dtype, copy=copy)
+  File "C:\Users\GraserA\AppData\Local\miniconda3\envs\nautilus\lib\site-packages\pandas\core\dtypes\astype.py", line 184, in astype_array
+    values = values.astype(dtype, copy=copy)
+  File "C:\Users\GraserA\AppData\Local\miniconda3\envs\nautilus\lib\site-packages\pandas\core\arrays\datetimes.py", line 701, in astype
+    return dtl.DatetimeLikeArrayMixin.astype(self, dtype, copy)
+  File "C:\Users\GraserA\AppData\Local\miniconda3\envs\nautilus\lib\site-packages\pandas\core\arrays\datetimelike.py", line 472, in astype
+    raise TypeError(
+TypeError: Converting from datetime64[ns] to int32 is not supported. Do obj.astype('int64').astype(dtype) instead
+(nautilus) PS C:\Users\GraserA\Documents\GitHub\Nautilus>
+```
 
 ## Documentation
 
@@ -60,7 +94,143 @@ For training ```Nautilus``` up to specifications defined in the paper, adjust th
 python training-rnn-v2-indie-timesplit.py --data {brest_1800,piraeus_1800,mt_1800} --gpuid 0 --bs 1 --njobs 200 --crs {2154,2100,2100} --length 32 --stride 16 --patience 10 --shiptype --dspeed --dcourse --max_dt {1800,3600}
 ```
 
+
 for the 30 min. and 60 min. variant, respectively.
+
+### Replication attempt 
+
+
+```bash
+python training-rnn-v2-indie-timesplit.py --data brest_1800 --gpuid 0 --bs 1 --njobs 50 --crs 2154 --length 32 --stride 16 --patience 10 --shiptype --dspeed --dcourse --max_dt 1800
+
+FileNotFoundError: [Errno 2] No such file or directory: './data/pkl/shiptype_token_lookup_v3.pkl'
+```
+
+Copied './data/shiptype_token_lookup_v3.pkl' to './data/pkl/shiptype_token_lookup_v3.pkl' 
+
+```
+FileNotFoundError: [Errno 2] No such file or directory: './data/fig/exp_study/delta_series_timeseries_split_lookahead_distribution_brest_1800_window_32_stride_16_crs_2154_dspeed_dcourse_.pdf'
+```
+
+Created missing directory data/fig/exp_study
+
+```
+(nautilus) PS C:\Users\GraserA\Documents\GitHub\Nautilus> python training-rnn-v2-indie-timesplit.py --data brest_1800 --gpuid 0 --bs 1 --njobs 50 --crs 2154 --length 32 --stride 16 --patience 10 --shiptype --dspeed --dcourse --max_dt 1800
+C:\Users\GraserA\AppData\Local\miniconda3\envs\nautilus\lib\site-packages\torch\random.py:42: UserWarning: Failed to initialize NumPy: module compiled against API version 0x10 but this version of numpy is 0xf (Triggered internally at ..\torch\csrc\utils\tensor_numpy.cpp:77.)
+  return default_generator.manual_seed(seed)
+[Loaded] Dataset AIS Positions: 4408217
+[Invalid MIDs] Dataset AIS Positions: 4408217
+Train @(min(trajectories_dates[train_dates]), max(trajectories_dates[train_dates]))=(datetime.date(2015, 9, 30), datetime.date(2015, 12, 30));
+Dev @(min(trajectories_dates[dev_dates]), max(trajectories_dates[dev_dates]))=(datetime.date(2015, 12, 31), datetime.date(2016, 2, 14));
+Test @(min(trajectories_dates[test_dates]), max(trajectories_dates[test_dates]))=(datetime.date(2016, 2, 15), datetime.date(2016, 3, 31))
+Sanity Check #1;
+        trajectories.groupby([VESSEL_NAME, 'id', 'dataset_tr1_val2_test3'])['timestamp'].is_monotonic_increasing.all()=True
+Scaling <function <lambda> at 0x0000022F52A79C60> to 50 CPUs
+100%|████████████████████████████████████████████████████████████████████████████| 14421/14421 [02:52<00:00, 83.54it/s]
+windowing_params["input_feats"]=['dlon_curr', 'dlat_curr', 'dspeed_curr', 'dcourse_curr', 'dt_curr', 'dt_next']
+Scaling <function <lambda> at 0x0000022F52A79CF0> to 50 CPUs
+100%|███████████████████████████████████████████████████████████████████████████| 14421/14421 [00:36<00:00, 394.07it/s]
+ShipTypeVRF(
+  (rnn_cell): LSTM(6, 350, batch_first=True)
+  (fc): Sequential(
+    (0): Sequential(
+      (0): Linear(in_features=356, out_features=150, bias=True)
+      (1): ReLU()
+    )
+    (1): Linear(in_features=150, out_features=2, bias=True)
+  )
+  (embedding): Embedding(13, 6)
+  (dropout): Dropout(p=0.25, inplace=False)
+)
+device=device(type='cpu')
+self.eps=0.0001
+.\data\pth\brest_1800\lstm_1_350_fc_150_share_all_window_32_stride_16_crs_2154_dspeed_dcourse_shiptype_batchsize_1_patience_10__brest_1800_dataset__timeseries_split_.dropout_after_cat.sn_cml.epoch{0}.pth
+Traceback (most recent call last):
+  File "C:\Users\GraserA\Documents\GitHub\Nautilus\training-rnn-v2-indie-timesplit.py", line 313, in <module>
+    tr.train_model(
+  File "C:\Users\GraserA\Documents\GitHub\Nautilus\train.py", line 153, in train_model
+    train_loss = train_step(model, device, criterion, optimizer, train_loader)
+  File "C:\Users\GraserA\Documents\GitHub\Nautilus\train.py", line 79, in train_step
+    for j, (xb, yb, lb, *args) in (pbar := tqdm.tqdm(enumerate(train_loader), leave=False, total=len(train_loader), dynamic_ncols=True)):
+  File "C:\Users\GraserA\AppData\Local\miniconda3\envs\nautilus\lib\site-packages\tqdm\std.py", line 1195, in __iter__
+    for obj in iterable:
+  File "C:\Users\GraserA\AppData\Local\miniconda3\envs\nautilus\lib\site-packages\torch\utils\data\dataloader.py", line 628, in __next__
+    data = self._next_data()
+  File "C:\Users\GraserA\AppData\Local\miniconda3\envs\nautilus\lib\site-packages\torch\utils\data\dataloader.py", line 671, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "C:\Users\GraserA\AppData\Local\miniconda3\envs\nautilus\lib\site-packages\torch\utils\data\_utils\fetch.py", line 58, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "C:\Users\GraserA\AppData\Local\miniconda3\envs\nautilus\lib\site-packages\torch\utils\data\_utils\fetch.py", line 58, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "C:\Users\GraserA\Documents\GitHub\Nautilus\dataset.py", line 89, in __getitem__
+    return torch.tensor(self.scaler.transform(self.samples[item]).astype(self.dtype)),\
+RuntimeError: Could not infer dtype of numpy.float32
+```
+
+--> Moved from Windows to WSL/Ubuntu
+
+
+```
+RuntimeError: Parent directory ./data/pth/brest_1800 does not exist.
+```
+
+Created output dir 
+
+```bash
+(nautilus) grasera@N3DSS2206:/mnt/c/Users/GraserA/Documents/GitHub/Nautilus$ python training-rnn-v2-indie-timesplit.py --data brest_1800 --gpuid 0 --bs 1 --njobs 50 --crs 2154 --length 32 --stride 16 --patience 10 --shiptype --dspeed --dcourse --max_dt 1800
+[Loaded] Dataset AIS Positions: 4408217
+[Invalid MIDs] Dataset AIS Positions: 4408217
+Train @(min(trajectories_dates[train_dates]), max(trajectories_dates[train_dates]))=(datetime.date(2015, 9, 30), datetime.date(2015, 12, 30));
+Dev @(min(trajectories_dates[dev_dates]), max(trajectories_dates[dev_dates]))=(datetime.date(2015, 12, 31), datetime.date(2016, 2, 14));
+Test @(min(trajectories_dates[test_dates]), max(trajectories_dates[test_dates]))=(datetime.date(2016, 2, 15), datetime.date(2016, 3, 31))
+Sanity Check #1;
+        trajectories.groupby([VESSEL_NAME, 'id', 'dataset_tr1_val2_test3'])['timestamp'].is_monotonic_increasing.all()=True
+Scaling <function <lambda> at 0x7f4e82348d30> to 50 CPUs
+100%|█████████████████████████████████████████████████████████████████████████████| 14421/14421 [02:26<00:00, 98.13it/s]
+windowing_params["input_feats"]=['dlon_curr', 'dlat_curr', 'dspeed_curr', 'dcourse_curr', 'dt_curr', 'dt_next']
+Scaling <function <lambda> at 0x7f4e82348dc0> to 50 CPUs
+100%|████████████████████████████████████████████████████████████████████████████| 14421/14421 [00:29<00:00, 495.39it/s]
+ShipTypeVRF(
+  (rnn_cell): LSTM(6, 350, batch_first=True)
+  (fc): Sequential(
+    (0): Sequential(
+      (0): Linear(in_features=356, out_features=150, bias=True)
+      (1): ReLU()
+    )
+    (1): Linear(in_features=150, out_features=2, bias=True)
+  )
+  (embedding): Embedding(13, 6)
+  (dropout): Dropout(p=0.25, inplace=False)
+)
+device=device(type='cuda', index=0)
+self.eps=0.0001
+./data/pth/brest_1800/lstm_1_350_fc_150_share_all_window_32_stride_16_crs_2154_dspeed_dcourse_shiptype_batchsize_1_patience_10__brest_1800_dataset__timeseries_split_.dropout_after_cat.sn_cml.epoch{0}.pth
+Loss Decreased (inf -> 19.89650). Saving Model... Done!
+Epoch #1/100 | Train Loss: 30.95741 | Validation Loss: 19.89650 | Time Elapsed: 2133.14975
+Loss: 19.89650 |  Accuracy: 28.13788 | 16.53355; 562.24835; 1101.75208; 1641.74609; 2646.30444; 3307.54761 m
+Loss Decreased (19.89650 -> 18.22664). Saving Model... Done!
+Epoch #2/100 | Train Loss: 23.65413 | Validation Loss: 18.22664 | Time Elapsed: 2120.82069
+Loss Decreased (18.22664 -> 16.36896). Saving Model... Done!
+Epoch #3/100 | Train Loss: 21.82535 | Validation Loss: 16.36896 | Time Elapsed: 2140.66847
+Loss Decreased (16.36896 -> 15.79784). Saving Model... Done!
+Epoch #4/100 | Train Loss: 20.38762 | Validation Loss: 15.79784 | Time Elapsed: 2104.46122
+Loss Increased (15.79784 -> 16.10181).
+Epoch #5/100 | Train Loss: 19.44114 | Validation Loss: 16.10181 | Time Elapsed: 2132.84904
+Loss Decreased (15.79784 -> 15.18527). Saving Model... Done!
+Epoch #6/100 | Train Loss: 18.98068 | Validation Loss: 15.18527 | Time Elapsed: 2109.91644
+Loss: 15.18527 |  Accuracy: 21.47519 | 13.47575; 398.90659; 778.09918; 1283.44019; 1679.20813; 1996.84949 m
+Loss Decreased (15.18527 -> 14.95022). Saving Model... Done!
+Epoch #7/100 | Train Loss: 18.49553 | Validation Loss: 14.95022 | Time Elapsed: 2132.46497
+Loss Decreased (14.95022 -> 14.47501). Saving Model... Done!
+Epoch #8/100 | Train Loss: 18.11352 | Validation Loss: 14.47501 | Time Elapsed: 2153.99340
+Loss Decreased (14.47501 -> 13.96758). Saving Model... Done!
+Epoch #9/100 | Train Loss: 17.76096 | Validation Loss: 13.96758 | Time Elapsed: 2120.81118
+Loss Decreased (13.96758 -> 13.71689). Saving Model... Done!
+Epoch #10/100 | Train Loss: 17.45697 | Validation Loss: 13.71689 | Time Elapsed: 2137.34794
+Loss Increased (13.71689 -> 13.96497).
+Epoch #11/100 | Train Loss: 17.07539 | Validation Loss: 13.96497 | Time Elapsed: 2134.06785
+Loss: 13.96497 |  Accuracy: 19.74942 | 12.35323; 372.93060; 776.15125; 1115.43054; 1670.83691; 1599.05176 m
+```
 
 
 ## Documentation
@@ -107,6 +277,14 @@ for the 30 min. and 60 min. variant, respectively. To run personalization, run t
 python client.py --data {brest_1800,piraeus_1800,mt_1800} --gpuid 3 --bs 1 --shiptype --crs 2100 --length 32 --stride 16 --dspeed --dcourse --port 8080 --mu 1 --fraction_fit 1 --silos 3 --max_dt {1800,3600} --personalize
 ```
 
+### Replication attempt
+
+```bash
+python client.py --data brest_1800 --gpuid 3 --bs 1 --shiptype --crs 2100 --length 32 --stride 16 --dspeed --dcourse --port 8080 --mu 1 --fraction_fit 1 --silos 3 --max_dt 1800
+
+
+```
+
 
 ## Documentation (server)
 ```bash
@@ -149,6 +327,14 @@ To reproduce the experimental study, i.e., test the performance of the models in
 
 ```bash
 python model-evaluation.py --data {brest_1800,brest_3600,piraeus_1800,piraeus_3600,mt_1800,mt_3600} [--gpuid GPUID] [--crs CRS] [--bi] [--dspeed] [--dcourse] [--shiptype] [--bs BS] [--length LENGTH] [--stride STRIDE] [--aug] [--max_dt MAX_DT] [--patience PATIENCE] [--silos SILOS] [--fraction_fit FRACTION_FIT] [--fraction_eval FRACTION_EVAL] [--cml] [--fl] [--perfl] [--global_ver GLOBAL_VER] [--mu MU]
+```
+
+### Replication attempt
+
+```bash
+python model-evaluation.py --data brest_1800 --gpuid 3 --bs 1 --shiptype --crs 2100 --length 32 --stride 16 --dspeed --dcourse --mu 1 --fraction_fit 1 --silos 3 --max_dt 1800
+
+FileNotFoundError: [Errno 2] No such file or directory: './data/pkl/exp_study/brest_1800_dataset_window_32_stride_16_crs_2100_dspeed_dcourse.traj_delta_windows.pickle'
 ```
 
 ## Documentation

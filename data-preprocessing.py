@@ -43,7 +43,7 @@ if __name__ == '__main__':
     parser.add_argument('--max_speed', help='Maximum speed threshold (outliers; default:50 knots)', default=50, type=int, required=False)
     parser.add_argument('--min_pts', help='Minimum points threshold for constructing a trajectory (default:20 points)', default=20, type=int, required=False)
     parser.add_argument('--shiptype', help='Include shiptype', action='store_true', required=False)
-    parser.add_argument('--njobs', help='#CPUs (default:200)', default=200, type=int, required=False)
+    parser.add_argument('--njobs', help='#CPUs (default:50)', default=50, type=int, required=False)
     args = parser.parse_args()
 
 
@@ -53,9 +53,9 @@ if __name__ == '__main__':
 
     if args.data == 'brest':
         # BREST; CRS EPSG:2154
-        CFG_ROOT = '~/data/brest-dataset'
+        CFG_ROOT = './data/brest-dataset'
 
-        df = pd.read_csv(os.path.join(CFG_ROOT, 'nari_dynamic.csv'))
+        df = pd.read_csv(os.path.join(CFG_ROOT, 'nari_dynamic.csv'))  # , rows=1000)
         print(f'[Raw Dataset] Dataset AIS Positions: {len(df)}')
         VESSEL_ID_NAME, SPEED_NAME, COURSE_NAME, TIMESTAMP_NAME, TIMESTAMP_UNIT, COORDS_NAMES, COORDS_CRS = 'sourcemmsi', 'speedoverground', 'courseoverground', 't', 's', ['lon', 'lat'], 4326
 
@@ -69,7 +69,7 @@ if __name__ == '__main__':
         print(f'[Invalid MMSIs] Dataset AIS Positions: {len(df)}; Time elapsed: {time.time() - time_invalidmmsis}')
 
         df.loc[:, f'timestamp_datetime'] = pd.to_datetime(df.loc[:, TIMESTAMP_NAME], unit=TIMESTAMP_UNIT)
-        df.loc[:, f'timestamp_sec'] = df.timestamp_datetime.astype(int) // 10**9
+        df.loc[:, f'timestamp_sec'] = df.timestamp_datetime.astype('int64') // 10**9
 
         # Fetch ```Static``` data
         df_static = pd.read_csv(os.path.join(CFG_ROOT, 'static', 'nari_static.csv'))

@@ -332,10 +332,17 @@ python model-evaluation.py --data {brest_1800,brest_3600,piraeus_1800,piraeus_36
 ### Replication attempt
 
 ```bash
-python model-evaluation.py --data brest_1800 --gpuid 3 --bs 1 --shiptype --crs 2100 --length 32 --stride 16 --dspeed --dcourse --mu 1 --fraction_fit 1 --silos 3 --max_dt 1800
-
-FileNotFoundError: [Errno 2] No such file or directory: './data/pkl/exp_study/brest_1800_dataset_window_32_stride_16_crs_2100_dspeed_dcourse.traj_delta_windows.pickle'
+(nautilus) grasera@N3DSS2206:/mnt/c/Users/GraserA/Documents/GitHub/Nautilus$ python model-evaluation.py --data brest_1800 --gpuid 0 --bs 1 --shiptype --crs 2154 --length 32 --stride 16 --dspeed --dcourse --mu 1 --fraction_fit 1 --silos 3 --
+max_dt 1800 --cml
+{'data': 'brest_1800', 'crs': 2154, 'bs': 1, 'length_min': 18, 'length_max': 32, 'stride': 16, 'dspeed': True, 'shiptype': True, 'dcourse': True, 'input_feats': ['dlon_curr', 'dlat_curr', 'dspeed_curr', 'dcourse_curr', 'dt_curr', 'dt_next']}
+Loaded Trajectories from brest_1800_dataset_window_32_stride_16_crs_2154_dspeed_dcourse.traj_delta_windows.pickle
+['2.93438' '3.29111' '-0.00149' '0.03197' '24.29291' '24.43057']        ['186.89992' '235.92678' '1.29155' '44.59909' '62.59377' '63.52115']
+                Evaluating Centralized VRF Model
+self.eps=0.0001
+Loss: 13.67918 |  Accuracy: 19.34525 | 12.75444; 323.70953; 570.64307; 876.40796; 1141.72656; 1550.24634 m
 ```
+
+
 
 ## Documentation
 ```bash

@@ -158,3 +158,12 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
+data/fig/exp_study/delta_series_timeseries_split_lookahead_distribution_brest_1800_window_32_stride_16_crs_2154_dspeed_dcourse_.pdf
+data/pkl/exp_study/brest_1800_dataset_window_32_stride_16_crs_2154_dspeed_dcourse.traj_delta_windows.pickle
+data/brest-dataset/static/nari_static.csv
+data/brest-dataset/nari_dynamic.csv
+data/brest-dataset/dataset_trajectories_preprocessed_with_type.fixed.csv
+data/brest-dataset/dataset_trajectories_preprocessed.fixed.csv
+data/brest-dataset/10_sec__1800_sec/dataset_trajectories_preprocessed_with_type.fixed.csv
+data/pkl/exp_study/brest_1800_vessel_shiptypes_v3.pkl
+data/pkl/shiptype_token_lookup_v3.pkl
